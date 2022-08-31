@@ -14,8 +14,11 @@ router.get("/", (req, res) =>
         .catch(error => console.log(error))
         )
 
+// Display add new gig form
+router.get("/add", (req, res) => res.render("add"))
+
 // Add new Gig
-router.get("/add", (req, res) => {
+router.post("/add", (req, res) => {
     const data = {
         title: "Simple Wordpress website",
         technologies: "wordpress, php, html, css",
