@@ -12,7 +12,7 @@ db.authenticate()
 const app = express()
 
 // Handlebars
-app.engine("handlebars", exphbs({ defaultLayout: main }))
+app.engine("handlebars", exphbs.engine({ defaultLayout: "main" }))
 app.set("view engine", "handlebars")
 
 // Set static folder

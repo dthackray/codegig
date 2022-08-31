@@ -6,9 +6,10 @@ const Gig = require("../models/Gig")
 // Get all Gigs
 router.get("/", (req, res) => 
     Gig.findAll()
-        .then(gigs => {
-            console.log(gigs)
-            res.sendStatus(200)
+        .then(gigs => { 
+            res.render("gigs", {
+                gigs
+            })
         })
         .catch(error => console.log(error))
         )
