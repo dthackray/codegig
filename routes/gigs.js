@@ -16,11 +16,11 @@ router.get("/", (req, res) =>
 // Add new Gig
 router.get("/add", (req, res) => {
     const data = {
-        title: "Looking for a React developer",
-        technologies: "react, javascript, html, css",
-        budget: "$3,000",
+        title: "Simple Wordpress website",
+        technologies: "wordpress, php, html, css",
+        budget: "$1,000",
         description: "lorem",
-        contact_email: "user1@gmail.com"
+        contact_email: "user2@gmail.com"
     }
 
     let { title, technologies, budget, description, contact_email } = data
