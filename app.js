@@ -2,19 +2,7 @@ const express = require("express")
 const exphbs = require("express-handlebars")
 const bodyParser = require("body-parser")
 const path = require("path")
-
-const Sequelize = require("sequelize")
-const db = new Sequelize ("codegig", "postgres", "password", {
-    host: "localhost",
-    dialect: "postgres",
-    operatorsAliases: false,
-    pool: {
-        max: 5,
-        min: 0,
-        acquire: 30000,
-        idle: 10000
-    }
-})
+const db = require("./config/database")
 
 // Test DB
 db.authenticate()
