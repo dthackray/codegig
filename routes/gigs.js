@@ -3,6 +3,7 @@ const router = express.Router()
 const db = require("../config/database")
 const Gig = require("../models/Gig")
 
+// Get all Gigs
 router.get("/", (req, res) => 
     Gig.findAll()
         .then(gigs => {
@@ -11,5 +12,29 @@ router.get("/", (req, res) =>
         })
         .catch(error => console.log(error))
         )
+
+// Add new Gig
+router.get("/add", (req, res) => {
+    const data = {
+        title: "Looking for a React developer",
+        technologies: "react, javascript, html, css",
+        budget: "$3,000",
+        description: "lorem",
+        contact_email: "user1@gmail.com"
+    }
+
+    let { title, technologies, budget, description, contact_email } = data
+
+    // Insert into table
+    Gig.create({
+        title,
+        technologies,
+        budget,
+        description,
+        contact_email
+    })
+    .then(gig => res.redirect('/gigs'))
+    .catch(error => console.log(error))
+})
 
 module.exports = router
