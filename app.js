@@ -16,6 +16,11 @@ const db = new Sequelize ("codegig", "postgres", "password", {
     }
 })
 
+// Test DB
+db.authenticate()
+    .then(() => console.log("Database Connected"))
+    .catch(error => console.log(error))
+
 const app = express()
 
 app.get("/", (req, res) => res.send("INDEX"))
