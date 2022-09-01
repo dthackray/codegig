@@ -3,7 +3,6 @@ const Sequelize = require("sequelize")
 module.exports = new Sequelize ("codegig", "postgres", "password", {
     host: "localhost",
     dialect: "postgres",
-    operatorsAliases: false,
     pool: {
         max: 5,
         min: 0,
