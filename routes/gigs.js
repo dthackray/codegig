@@ -1,7 +1,10 @@
+const { application } = require("express")
 const express = require("express")
 const router = express.Router()
 const db = require("../config/database")
 const Gig = require("../models/Gig")
+const Sequelize = require("sequelize")
+const Op = Sequelize.Op
 
 // Get all Gigs
 router.get("/", (req, res) => 
@@ -67,6 +70,15 @@ router.post("/add", (req, res) => {
         .then(gig => res.redirect('/gigs'))
         .catch(error => console.log(error))
     }
+})
+
+// Search for gigs
+router.get("/search", (req, res) => {
+    const { term } = req.query
+
+    Gig.findAll({ where: { technologies: { [Op.like]: "%" + term + "%" } } })
+        .then(gigs => res.render('gigs', { gigs }))
+        .catch(error => console.log(error))
 })
 
 module.exports = router
